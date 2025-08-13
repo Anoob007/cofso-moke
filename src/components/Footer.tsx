@@ -31,8 +31,7 @@ export default function Footer() {
                 </div>
 
                 <p className="mt-4 max-w-md text-sm leading-6 text-zinc-600">
-                  skillnode empowers teams to transform raw data into clear, compelling visuals —
-                  making insights easier to share, understand, and act on.
+                  Skillnode Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.
                 </p>
 
                 {/* Socials */}
@@ -58,11 +57,11 @@ export default function Footer() {
 
               {/* Link columns */}
               <div className="md:col-span-7 lg:col-span-6 grid grid-cols-2 gap-8 sm:grid-cols-3">
-                <FooterCol title="Product" items={[
-                  { label: "Features", href: "#" },
-                  { label: "Pricing", href: "#" },
-                  { label: "Integrations", href: "#" },
-                  { label: "Changelog", href: "#" },
+                <FooterCol title="For Candidates" items={[
+                  { label: "Browse Jobs", href: "#" },
+                  { label: "Browse Categories", href: "#" },
+                  { label: "Candidate Dashboard", href: "#" },
+                  { label: "Job Alerts", href: "#" },
                 ]} />
                 <FooterCol title="Resources" items={[
                   { label: "Documentation", href: "#" },
@@ -98,9 +97,9 @@ export default function Footer() {
             <span
               className="block font-extrabold tracking-tighter text-zinc-900/5"
               style={{
-                fontSize: "clamp(1rem, 20vw, 15.5rem)", // responsive size
-                lineHeight: 1.01,
-                letterSpacing: "-.01em",
+                fontSize: "clamp(1rem, 18vw, 13.5rem)", // responsive size
+                lineHeight: 1.03,
+                letterSpacing: "-.02em",
                 whiteSpace: "nowrap",
               }}
             >

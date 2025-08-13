@@ -12,9 +12,9 @@ export default function Navbar() {
 
   const links = [
     { name: "Home", href: "/" },
-    { name: "Find a Work", href: "/work" },
-    { name: "Find Talent", href: "/talent" },
-    { name: "Contact Me", href: "/contact" },
+    { name: "Find a Work", href: "#" },
+    { name: "Find Talent", href: "#" },
+    { name: "How It Works", href: "#" },
   ];
 
   return (
@@ -38,12 +38,19 @@ export default function Navbar() {
                 href={link.href}
                 className={`relative group font-medium transition-colors ${
                   pathname === link.href
-                    ? "text-blue-600"
-                    : "text-gray-700 hover:text-black"
+                    ? " text-md"
+                    : "text-gray-700 hover:text-black text-sm"
                 }`}
+              
+              style={ pathname === link.href ? { color: "#e61d88ff" } : {}}
               >
                 {link.name}
-                <span className="absolute left-0 -bottom-1 w-0 h-[2px] bg-black transition-all group-hover:w-full"></span>
+                <span className="absolute left-0 -bottom-1 w-0 h-[2px] bg-black transition-all group-hover:w-full"
+                 style={{
+          backgroundColor: pathname === link.href ? "#cf237fff" : "#000000",
+        }}
+                
+                ></span>
               </Link>
             ))}
           </nav>
