@@ -73,11 +73,10 @@ export default function ProfileBannerAligned() {
         </div>
 
         {/* Socials row */}
-        <div className="mt-4 flex gap-4 pl-5">
-          {["X","G","👤","🔁","●"].map((k,i)=>(
-            <span key={i} className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-zinc-200 bg-white shadow-sm">{k}</span>
-          ))}
-        </div>
+        {/* <div className="mt-4 pl-5">
+       <h6>About Me</h6>
+         <p>Ut sodales arcu sagittis metus molestie molestie. Nulla maximus volutpat dui. Etiam luctus lobortis massa in pulvinar. Maecenas nunc odio, faucibus in malesuada a, dignissim at odio. Aenean eleifend urna.</p>
+        </div> */}
       </div>
     </section>
   );
