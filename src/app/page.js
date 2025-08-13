@@ -1,8 +1,8 @@
+import ProfileBannerCard from "../components/ProfileBannerCard";
+
+
+
 
 export default function Home() {
-  return (
-    <div>
-     
-    </div>
-  );
+  return <ProfileBannerCard />;
 }

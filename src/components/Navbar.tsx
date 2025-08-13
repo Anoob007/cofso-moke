@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { Menu } from "lucide-react";
 import { usePathname } from "next/navigation";
+import { CONTAINER } from "../utils/ui";
 
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -18,7 +19,7 @@ export default function Navbar() {
 
   return (
     <header className="bg-white">
-      <div className="max-w-7xl mx-auto px-4">
+        <div className={CONTAINER}>
         {/* Border only under logo-to-login */}
         <div className="flex justify-between items-center h-16 border-b border-gray-300">
           

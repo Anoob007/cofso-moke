@@ -1,9 +1,11 @@
 // components/Footer.tsx
 import Link from "next/link";
+import { CONTAINER } from "../utils/ui";
 
-export default function Navbar() {
+export default function Footer() {
   return (
     <footer className="relative">
+        <div className={CONTAINER}>
       <div className="mx-auto max-w-7xl py-10">
         {/* OUTER ROUNDED: auto height on mobile, fixed on md+; clips watermark */}
         <div
@@ -11,7 +13,7 @@ export default function Navbar() {
             relative overflow-hidden rounded-[2.25rem]
             border border-zinc-200/60 bg-zinc-50
             shadow-[0_30px_80px_-30px_rgba(0,0,0,0.25)]
-            h-auto  pb-28 md:pb-0
+            h-auto md:h-[500px]  pb-28 md:pb-0
           "
         >
           {/* Soft fade near the top so the watermark feels subtle */}
@@ -96,8 +98,8 @@ export default function Navbar() {
             <span
               className="block font-extrabold tracking-tighter text-zinc-900/5"
               style={{
-                fontSize: "clamp(1rem, 23vw, 15.5rem)", // responsive size
-                lineHeight: 1,
+                fontSize: "clamp(1rem, 20vw, 15.5rem)", // responsive size
+                lineHeight: 1.01,
                 letterSpacing: "-.01em",
                 whiteSpace: "nowrap",
               }}
@@ -106,6 +108,7 @@ export default function Navbar() {
             </span>
           </div>
         </div>
+      </div>
       </div>
     </footer>
   );
