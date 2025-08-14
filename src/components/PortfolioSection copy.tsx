@@ -75,6 +75,14 @@ export default function PortfolioSection() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/35 via-black/10 to-transparent" />
               </div>
 
+              {/* caption + chips */}
+              <div className="absolute inset-x-2 bottom-2 flex items-center justify-between gap-2">
+               
+                <span className="rounded-lg bg-black/50 px-2 py-1 text-xs text-white">
+                  View
+                </span>
+              </div>
+
               {/* shine swipe */}
               <span
                 aria-hidden

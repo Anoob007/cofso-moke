@@ -3,6 +3,10 @@ import Link from "next/link";
 import { CONTAINER } from "../utils/ui";
 
 export default function Footer() {
+  // Brand palette
+  const blue = "#124C98";   // primary
+  const green = "#059669";  // accent
+
   return (
     <footer className="relative">
       <div className={CONTAINER}>
@@ -25,7 +29,7 @@ export default function Footer() {
                 {/* Brand */}
                 <div className="md:col-span-5 lg:col-span-6">
                   <div className="flex items-center gap-3">
-                    <span className="text-lg font-semibold tracking-tight">
+                    <span className="text-lg font-semibold tracking-tight" style={{ color: blue }}>
                       SKILLNODE.
                     </span>
                   </div>
@@ -58,6 +62,7 @@ export default function Footer() {
                       { label: "Candidate Dashboard", href: "#" },
                       { label: "Job Alerts", href: "#" },
                     ]}
+                    blue={blue}
                   />
                   <FooterCol
                     title="Resources"
@@ -67,6 +72,7 @@ export default function Footer() {
                       { label: "Blog", href: "#" },
                       { label: "Support", href: "#" },
                     ]}
+                    blue={blue}
                   />
                   <FooterCol
                     title="Company"
@@ -76,12 +82,18 @@ export default function Footer() {
                       { label: "Contact", href: "#" },
                       { label: "Partners", href: "#" },
                     ]}
+                    blue={blue}
                   />
                 </div>
               </div>
 
               {/* Divider */}
-              <div className="my-8 h-px w-full bg-gradient-to-r from-transparent via-rose-300/50 to-transparent" />
+              <div
+                className="my-8 h-px w-full"
+                style={{
+                  background: `linear-gradient(90deg, transparent, ${blue}22, transparent)`,
+                }}
+              />
 
               {/* Bottom row */}
               <div className="flex flex-col items-start justify-between gap-4 text-sm text-zinc-500 md:flex-row md:items-center">
@@ -97,9 +109,10 @@ export default function Footer() {
             {/* Animated watermark */}
             <div className="pointer-events-none absolute inset-x-0 bottom-[-1.25rem] md:bottom-[-2.5rem] z-0 flex select-none justify-center">
               <span
-                className="block font-extrabold tracking-tighter bg-gradient-to-r from-rose-400/10 via-rose-500/10 to-pink-400/10 bg-clip-text text-transparent animate-gradient"
+                className="block font-extrabold tracking-tighter bg-clip-text text-transparent animate-gradient"
                 style={{
-                  fontSize: "clamp(1rem, 18vw, 13.5rem)",
+                  backgroundImage: `linear-gradient(90deg, ${blue}1A, ${green}1A, ${blue}1A)`,
+                  fontSize: "clamp(1rem, 18vw, 14.5rem)",
                   lineHeight: 1.03,
                   whiteSpace: "nowrap",
                 }}
@@ -115,11 +128,13 @@ export default function Footer() {
 }
 
 /* Helpers */
-function FooterCol({ title, items }: { title: string; items: { label: string; href: string }[] }) {
+function FooterCol({ title, items, blue }: { title: string; items: { label: string; href: string }[]; blue: string }) {
   return (
     <div>
-      <h3 className="text-sm font-semibold text-zinc-900 relative pb-1 mb-2 after:absolute after:left-0 after:bottom-0 after:h-0.5 after:w-6 after:bg-rose-400">
+      <h3 className="text-sm font-semibold text-zinc-900 relative pb-1 mb-2">
         {title}
+        {/* brand underline */}
+        <span className="absolute left-0 bottom-0 h-0.5 w-6" style={{ backgroundColor: blue }} />
       </h3>
       <ul className="mt-4 space-y-3">
         {items.map((it) => (
@@ -136,7 +151,7 @@ function FooterLink({ href, children }: { href: string; children: React.ReactNod
   return (
     <Link
       href={href}
-      className="text-sm text-zinc-600 transition-all hover:text-rose-600 hover:underline underline-offset-4"
+      className="text-sm text-zinc-600 transition-all hover:underline underline-offset-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 rounded hover:text-[#124C98]"
     >
       {children}
     </Link>
@@ -148,7 +163,11 @@ function SocialLink({ href, label, children }: { href: string; label: string; ch
     <Link
       href={href}
       aria-label={label}
-      className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-white/50 bg-white/50 backdrop-blur-sm text-zinc-600 shadow-sm transition hover:border-rose-400 hover:bg-rose-50 hover:text-rose-600"
+      className="inline-flex h-9 w-9 items-center justify-center rounded-lg border backdrop-blur-sm text-zinc-600 shadow-sm transition focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 hover:border-[#124C98] hover:bg-[#124C98]/10 hover:text-[#124C98]"
+      style={{
+        borderColor: "rgba(255,255,255,0.5)",
+        background: "rgba(255,255,255,0.5)",
+      }}
     >
       {children}
     </Link>
