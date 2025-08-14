@@ -77,9 +77,7 @@ export default function PortfolioSection() {
 
               {/* caption + chips */}
               <div className="absolute inset-x-2 bottom-2 flex items-center justify-between gap-2">
-                <span className="rounded-lg bg-white/90 px-2 py-1 text-xs font-medium text-zinc-900">
-                  Shot {i + 1}
-                </span>
+               
                 <span className="rounded-lg bg-black/50 px-2 py-1 text-xs text-white">
                   View
                 </span>
@@ -134,7 +132,7 @@ export default function PortfolioSection() {
                   <img
                     src={portfolioImgs[lbIndex]}
                     alt={`Preview ${lbIndex + 1}`}
-                    className="max-h-[80vh] w-full object-contain"
+                    className="max-h-[80vh] w-full"
                   />
                 </div>
 

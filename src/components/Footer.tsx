@@ -31,7 +31,7 @@ export default function Footer() {
                   </div>
 
                   <p className="mt-4 max-w-md text-sm leading-6 text-zinc-600">
-                    Skillnode — contrary to popular belief, Lorem Ipsum is not simply random text...
+                    Skillnode — Contrary to popular belief, Lorem Ipsum is not simply. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.
                   </p>
 
                   {/* Socials */}
