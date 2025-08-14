@@ -1,4 +1,3 @@
-// app/components/Navbar.tsx
 "use client";
 
 import Link from "next/link";
@@ -6,13 +5,12 @@ import { useState, useEffect, useRef } from "react";
 import { Menu, X, UserPlus, LogIn } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
-import { CONTAINER } from "../utils/ui"; // keep your existing container util
+import { CONTAINER } from "../utils/ui";
 
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const pathname = usePathname();
   const panelRef = useRef<HTMLDivElement>(null);
-  const [hoverIdx, setHoverIdx] = useState<number | null>(null);
 
   const links = [
     { name: "Home", href: "/" },
@@ -21,7 +19,7 @@ export default function Navbar() {
     { name: "How It Works", href: "#" },
   ];
 
-  // Close drawer on ESC
+  // Close on ESC
   useEffect(() => {
     function onKey(e: KeyboardEvent) {
       if (e.key === "Escape") setMobileOpen(false);
@@ -30,88 +28,76 @@ export default function Navbar() {
     return () => window.removeEventListener("keydown", onKey);
   }, [mobileOpen]);
 
-  // Focus drawer when opened
+  // Focus panel on open
   useEffect(() => {
     if (mobileOpen && panelRef.current) panelRef.current.focus();
   }, [mobileOpen]);
 
   return (
-    <header className="sticky top-0 z-50">
-      {/* Glass bar with subtle gradient underline */}
-      <div className="relative bg-white/70 backdrop-blur-md">
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-rose-300/60 to-transparent" />
-        <div className={CONTAINER}>
-          <div className="flex h-16 items-center justify-between">
-            {/* Logo */}
-            <Link href="/" className="flex items-center gap-2">
-              <span className="text-lg font-semibold tracking-wide">SKILLNODE.</span>
-            </Link>
-
-            {/* DESKTOP NAV */}
-            <nav className="relative hidden items-center gap-2 rounded-full border border-gray-200/70 bg-white/70 px-2 py-1 backdrop-blur md:flex">
-              <ul className="relative flex items-center gap-1">
-                {links.map((link, i) => {
-                  const active = pathname === link.href;
-                  const showHighlight = active || hoverIdx === i;
-                  return (
-                    <li key={link.name} className="relative">
-                      <Link
-                        href={link.href}
-                        onMouseEnter={() => setHoverIdx(i)}
-                        onMouseLeave={() => setHoverIdx(null)}
-                        className={[
-                          "relative z-10 rounded-full px-4 py-2 text-sm font-medium transition-colors",
-                          active ? "text-rose-600" : "text-gray-700 hover:text-gray-900",
-                        ].join(" ")}
-                        style={active ? { color: "#e61d88ff" } : {}}
-                      >
-                        {link.name}
-                      </Link>
-
-                      {showHighlight && (
-                        <motion.span
-                          layoutId="navHighlight"
-                          className="absolute inset-0 -z-10 rounded-full"
-                          transition={{ type: "spring", stiffness: 500, damping: 40 }}
-                          style={{
-                            background:
-                              "linear-gradient(135deg,#ffe3f0 0%,#fff 35%,#ffe3f0 100%)",
-                            boxShadow: "inset 0 0 0 1px rgba(230,29,136,0.15)",
-                          }}
-                        />
-                      )}
-                    </li>
-                  );
-                })}
-              </ul>
-            </nav>
-
-            {/* DESKTOP CTAs */}
-            <div className="hidden items-center gap-3 md:flex">
-              <Link href="#" className="rounded-full px-4 py-2 text-sm font-medium text-gray-700 transition hover:text-gray-900">
-                Sign Up
-              </Link>
-              <Link
-                href="#"
-                className="rounded-full border border-rose-300/70 bg-gradient-to-br from-white to-rose-50 px-4 py-2 text-sm font-semibold text-rose-700 shadow-sm transition hover:shadow"
-              >
-                Log In
-              </Link>
-            </div>
-
-            {/* Mobile trigger */}
-            <button
-              className="p-2 md:hidden"
-              aria-label="Open menu"
-              onClick={() => setMobileOpen(true)}
-            >
-              <Menu size={24} />
-            </button>
+    <header className="bg-white">
+      <div className={CONTAINER}>
+        {/* Border only under logo-to-login */}
+        <div className="flex h-16 items-center justify-between border-b border-gray-300">
+          {/* Logo */}
+          <div className="flex items-center gap-2">
+            <span className="text-lg font-semibold tracking-wide">
+              SKILLNODE.
+            </span>
           </div>
+
+          {/* Desktop Nav Links */}
+          <nav className="hidden items-center gap-8 md:flex">
+            {links.map((link) => (
+              <Link
+                key={link.name}
+                href={link.href}
+                className={`relative group font-medium transition-colors ${
+                  pathname === link.href
+                    ? " text-md"
+                    : "text-gray-700 hover:text-black text-sm"
+                }`}
+                style={pathname === link.href ? { color: "#e61d88ff" } : {}}
+              >
+                {link.name}
+                <span
+                  className="absolute left-0 -bottom-1 h-[2px] w-0 bg-black transition-all group-hover:w-full"
+                  style={{
+                    backgroundColor:
+                      pathname === link.href ? "#cf237fff" : "#000000",
+                  }}
+                />
+              </Link>
+            ))}
+          </nav>
+
+          {/* Desktop Buttons */}
+          <div className="hidden items-center gap-4 font-medium md:flex">
+            <Link
+              href="#"
+              className="text-gray-700 transition-colors hover:text-black"
+            >
+              Sign Up
+            </Link>
+            <Link
+              href="#"
+              className="rounded-full border border-gray-400 px-4 py-1 transition-colors hover:bg-gray-100"
+            >
+              Log In
+            </Link>
+          </div>
+
+          {/* Mobile Menu Button */}
+          <button
+            className="p-2 md:hidden"
+            aria-label="Open menu"
+            onClick={() => setMobileOpen(true)}
+          >
+            <Menu size={24} />
+          </button>
         </div>
       </div>
 
-      {/* MOBILE DRAWER */}
+      {/* Creative Mobile Side Drawer */}
       <AnimatePresence>
         {mobileOpen && (
           <>
@@ -178,13 +164,16 @@ export default function Navbar() {
                           ].join(" ")}
                           style={active ? { color: "#e61d88ff" } : {}}
                         >
+                          {/* Accent bar when active */}
                           <span
                             className={[
                               "absolute left-0 top-1/2 -translate-y-1/2 h-6 w-1 rounded-full",
                               active ? "bg-fuchsia-600" : "bg-transparent",
                             ].join(" ")}
                           />
-                          <span className="text-sm font-medium">{link.name}</span>
+                          <span className="text-sm font-medium">
+                            {link.name}
+                          </span>
                         </Link>
                       </li>
                     );
